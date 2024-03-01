@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 class ItemsRepositoryImplementation : ItemsRepository {
     override suspend fun fetchItems(): List<Item>? = withContext(Dispatchers.IO) {
         try {
-            val response = RetrofitInstance.apiService.fetchItems()
+            val response = RetrofitInstance.apiService.fetchItems() // calling Api
             if (response.isSuccessful) {
                 response.body()
             } else {

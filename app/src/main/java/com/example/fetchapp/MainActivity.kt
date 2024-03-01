@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         val viewModel = ViewModelProvider(this, viewModelFactory).get(ItemsViewModel::class.java)
         setContent {
             val items by viewModel.items.observeAsState(initial = emptyList())
-            AppScreen(viewModel = viewModel)
+            AppScreen(viewModel = viewModel) // The header screen is called
         }
     }
 }

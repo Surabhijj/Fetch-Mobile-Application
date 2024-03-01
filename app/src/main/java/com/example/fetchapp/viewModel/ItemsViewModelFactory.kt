@@ -3,6 +3,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.fetchapp.repository.ItemsRepository
 import com.example.fetchapp.viewModel.ItemsViewModel
 
+// Factory class for creating instances of ItemsViewModel
 class ItemsViewModelFactory(private val repository: ItemsRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ItemsViewModel::class.java)) {

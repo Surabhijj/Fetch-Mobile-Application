@@ -45,12 +45,10 @@ import com.example.fetchapp.viewModel.ItemsViewModel
 @Composable
 fun ItemsScreen(items: List<Item>?) {
     val viewModel: ItemsViewModel = viewModel()
-    val items by viewModel.items.observeAsState(initial = emptyList())
     val isLoading by viewModel.isLoading.collectAsState()
     var showGroupedScreen by remember { mutableStateOf(false) }
 
 
-    // State for managing dropdown visibility
     var showDropdown by remember { mutableStateOf(false) }
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -59,6 +57,7 @@ fun ItemsScreen(items: List<Item>?) {
             .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically) {
            Box{
+               // Sort By button
                Button(
                    onClick = { showDropdown = true },
                    modifier = Modifier
@@ -72,7 +71,7 @@ fun ItemsScreen(items: List<Item>?) {
                    Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                    Text("Sort By")
                }
-
+                // Dropdown menu is declared and initialized
                DropdownMenu(
                    expanded = showDropdown,
                    onDismissRequest = { showDropdown = false },
@@ -105,7 +104,7 @@ fun ItemsScreen(items: List<Item>?) {
                    }
                    DropdownMenuItem(onClick = {
                        showDropdown = false
-                       showGroupedScreen = false // Add this line
+                       showGroupedScreen = false
 
                        viewModel.sortItemsBy(Constants.NAME)
                    }) {
@@ -117,7 +116,7 @@ fun ItemsScreen(items: List<Item>?) {
            }
 
             Spacer(modifier = Modifier.width(46.dp))
-
+            // Group By ListId button
             Button(
                 onClick = {
                     showGroupedScreen = !showGroupedScreen
@@ -139,7 +138,7 @@ fun ItemsScreen(items: List<Item>?) {
 
 
 
-
+            // progress bar
             if (isLoading) {
                 Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                     CircularProgressIndicator()
@@ -158,7 +157,7 @@ fun ItemsScreen(items: List<Item>?) {
     }
 }
 
-
+// Display of list after groupby
 @Composable
 fun GroupedItemsScreen(viewModel: ItemsViewModel = viewModel()) {
     val groupedItems by viewModel.groupedItems.observeAsState(initial = emptyMap())
@@ -179,6 +178,7 @@ fun GroupedItemsScreen(viewModel: ItemsViewModel = viewModel()) {
     }
 }
 
+//GroupByItemView
 @Composable
 fun GroupByItemView(item: Item){
     Text(
@@ -190,6 +190,7 @@ fun GroupByItemView(item: Item){
     )
 }
 
+//View of initial list and sorted list
 @Composable
 fun ItemView(viewModel: ItemsViewModel = viewModel()) {
 

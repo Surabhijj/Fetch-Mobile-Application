@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
-    private const val BASE_URL = "https://fetch-hiring.s3.amazonaws.com/"
+    private const val BASE_URL = "https://fetch-hiring.s3.amazonaws.com/" // JSON file URL
 
     val apiService: ApiService by lazy {
         Retrofit.Builder()

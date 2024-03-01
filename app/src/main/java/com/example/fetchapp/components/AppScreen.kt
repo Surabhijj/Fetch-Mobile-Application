@@ -21,7 +21,7 @@ fun AppScreen(viewModel: ItemsViewModel) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(Constants.APP_NAME) },
+                title = { Text(Constants.APP_NAME) }, // the Header Name is assigned
                 backgroundColor = Color.Blue,
                 contentColor = Color.White,
             )
